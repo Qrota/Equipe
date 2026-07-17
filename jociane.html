@@ -224,28 +224,18 @@ background-size:cover;
 .header h1 { margin: 0; font-size: 24px; }
 .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
 
-.avatar{
-    width:110px;
-    height:110px;
-    min-width:110px;
-    min-height:110px;
-    flex:0 0 110px;
-    flex-shrink:0;
-    aspect-ratio:1/1;
-    margin:-20px auto 15px;
-    border-radius:50%;
-    overflow:hidden;
-    position:relative;
-    z-index:20;
-    background:rgba(255,255,255,.22);
-    backdrop-filter:blur(10px);
-    border:0px solid rgba(255,255,255,.75);
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.18),
-        inset 0 1px 2px rgba(255,255,255,.6);
-
+.avatar { 
+  width: 120px; 
+  height: 120px; 
+  border-radius: 50%; 
+  margin: -10px auto 10px; /* Sobrepõe levemente o header */
+  border: 1px solid #fff; 
+  overflow: hidden; 
+  background: #eee; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
 }
-
 .avatar img{
     width:100%;
     height:100%;
