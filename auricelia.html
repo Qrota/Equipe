@@ -2,313 +2,421 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Credencial Profissional - Acalanto</title>
 <style>
 :root {
-  --primary:#fab9b9;
-  --secondary:#fbecec;
-  --accent:#39c6cf;
-  --bg:#fff8fa;
-  --exclusive-gold: #c5a880;
-  --exclusive-gold-dark: #aa895d;
-  --exclusive-gold-light: #faf7f2;
+  --primary:#fab9b9;
+  --secondary:#fbecec;
+  --accent:#39c6cf;
+  --bg:#fff8fa;
+  --exclusive-gold: #c5a880;
+    --exclusive-gold-dark: #aa895d;
+    --exclusive-gold-light: #faf7f2;
+  /* ===== Premium Frosted Glass ===== */
+  --glass-bg:
+      rgba(255,255,255,.18);
+  --glass-bg-hover:
+      rgba(255,255,255,.24);
+  --glass-border:
+      rgba(255,255,255,.38);
+  --glass-border-light:
+      rgba(255,255,255,.58);
+  --glass-shadow:
+ 
+      0 25px 60px rgba(0,0,0,.16),
+      inset 0 1px 1px rgba(255,255,255,.45),
+      inset 0 -1px 1px rgba(255,255,255,.10);
 }
-
 * { box-sizing: border-box; }
-
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  background:
-    radial-gradient(circle at top left, #ffdcdc 0%, transparent 35%),
-    radial-gradient(circle at bottom right, #eef8ff 0%, transparent 40%),
-    linear-gradient(135deg, #ececec, #d6d6d6, #bdbdbd);
-  background-attachment: fixed;
-  background-size: cover;
-  padding: 10px;
-  min-height: 100dvh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+ background:
+radial-gradient(circle at top left,
+#ffdcdc 0%,
+transparent 35%),
+radial-gradient(circle at bottom right,
+#eef8ff 0%,
+transparent 40%),
+linear-gradient(
+135deg,
+#ececec,
+#d6d6d6,
+#bdbdbd
+);
+background-attachment:fixed;
+background-size:cover;
+  padding: 10px;
+  border-radius: 10px;
 }
-
 .wrapper {
-  max-width: 100%;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 100% 1fr;
-  gap: 24px;
+  max-width: 100svh;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 100% 1fr;
+  gap: 24px;
 }
-
-/* ==================== CARD 3D FLIP ==================== */
+/* ==================== ESTRUTURA DO CARD 3D (FLIP) ==================== */
 .card-container {
-  perspective: 1500px;
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  height: 100dvh;
-  cursor: pointer;
-  position: relative;
-  touch-action: manipulation;
+  perspective: 1500px;
+  width: 100%;
+  height: 100svh;
+  cursor: pointer;
+  position: relative;
 }
-
 .card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-style: preserve-3d;
-  will-change: transform;
+  position: relative;
+  width: 100%;
+  height:100svh;
+  text-align: left;
+  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
 }
-
+/* Classe que será aplicada via JS ao clicar no card */
 .card-container.flipped .card-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-
 .card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 28px;
-  display: flex;
-  flex-direction: column;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.12));
-  backdrop-filter: blur(24px) saturate(185%) brightness(1.08);
-  -webkit-backdrop-filter: blur(24px) saturate(185%) brightness(1.08);
-  border: 1px solid rgba(255,255,255,.42);
-  box-shadow: 0 20px 55px rgba(0,0,0,.16),
-              inset 0 1px 1px rgba(255,255,255,.55),
-              inset 0 -1px 1px rgba(255,255,255,.08);
+.card-back{
+    position:absolute;
+    width:100%;
+    height:100svh;
+    overflow:hidden;
+    border-radius:28px;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.26),
+            rgba(255,255,255,.12)
+        );
+    backdrop-filter:
+        blur(24px)
+        saturate(185%)
+        brightness(1.08);
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(185%)
+        brightness(1.08);
+    border:1px solid rgba(255,255,255,.42);
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.16),
+        inset 0 1px 1px rgba(255,255,255,.55),
+        inset 0 -1px 1px rgba(255,255,255,.08);
+    transition:
+       .45s cubic-bezier(.16,1,.3,1);
 }
-
 .card-front::after,
-.card-back::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(140deg, rgba(255,255,255,.55), rgba(255,255,255,.22) 18%, rgba(255,255,255,.021) 45%, transparent 75%);
+.card-back::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    background:
+        linear-gradient(
+            140deg,
+            rgba(255,255,255,.55),
+            rgba(255,255,255,.22) 18%,
+            rgba(255, 255, 255, 0.021) 45%,
+            transparent 75%
+     );
+}
+.card-front::before,
+.card-back::before{
+    content:"";
+    position:absolute;
+    inset:1px;
+    border-radius:27px;
+    border:1px solid rgba(255,255,255,.18);
+    pointer-events:none;
 }
 
-.card-front .watermark,
-.card-back .watermark {
-  position: absolute;
-  inset: 0;
-  background: url("mae_bebe_contorno3.png") center center no-repeat;
-  background-size: contain;
-  opacity: .08;
-  pointer-events: none;
+/* Efeito de hover interativo para enriquecer o visual do vidro */
+.card-front:hover, .card-back:hover {
+    border-color: rgba(255, 255, 255, 0.747);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
 }
-
-/* Frente */
+/* Frente do Card */
 .card-front {
-  z-index: 1;
-  transform: rotateY(0deg);
+  z-index: 1;
+  transform: rotateY(0deg);
 }
-
-/* Verso */
+/* Verso do Card */
 .card-back {
-  transform: rotateY(180deg);
-  padding: 24px;
-  justify-content: flex-start;
+  transform: rotateY(180deg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-
+  /* ==================== IMAGEM DE FUNDO REGENERADA ==================== */
+/* Adiciona a imagem de fundo com marca d'água na frente e no verso do card */
+.card-front::before,
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("mae_bebe_contorno3.png") no-repeat center center;
+    background-size: contain; 
+    opacity: 0.1; 
+    z-index: -1; 
+    pointer-events: none; 
+}
+/* Garante que todos os elementos de texto/imagens fiquem acima do fundo */
 .card-front > *,
 .card-back > * {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
-
-/* Conteúdo interno */
+/* ===================================================================== */
+/* Estilos internos do Card */
 .header {
-  background: linear-gradient(135deg, var(--secondary), var(--primary));
-  color: #3d3c3c;
-  padding: 20px;
-  text-align: center;
-  border-radius: 28px 28px 0 0;
+  background: linear-gradient(135deg, var(--secondary),var(--primary));
+  color: #3d3c3c;
+  padding: 20px;
+  text-align: center;
 }
 .header h1 { margin: 0; font-size: 24px; }
 .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
-
-.avatar {
-  width: 110px;
-  height: 110px;
-  min-width: 110px;
-  flex-shrink: 0;
-  margin: -50px auto 15px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid rgba(255,255,255,.85);
-  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+.avatar{
+    width:110px;
+    height:110px;
+    min-width:110px;
+    min-height:110px;
+    flex:0 0 110px;
+    flex-shrink:0;
+    aspect-ratio:1/1;
+    margin:-50px auto 15px;
+    border-radius:50%;
+    overflow:hidden;
+    position:relative;
+    z-index:20;
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(10px);
+    border:0px solid rgba(255,255,255,.75);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18),
+        inset 0 1px 2px rgba(255,255,255,.6);
 }
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.avatar img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
 }
-
 .info { padding: 0 24px 24px; }
-.info h2 { text-align: center; color: #353535; font-size: 20px; }
-
+.info h2 { text-align: center; color: #353535a8; font-size: 20px; }
 .badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--exclusive-gold), var(--exclusive-gold-dark));
-  color: white;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--exclusive-gold), var(--exclusive-gold-dark));
+  color: rgb(230, 235, 248);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
 }
-
+.meta { margin: 12px 0; font-size: 14px; }
 .meta div { padding: 6px 0; border-bottom: 1px solid #eee; }
-.about-text { font-size: 13px; line-height: 1.45; color: #555; }
-
+.about-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #555;
+  margin-top: 10px;
+}
+/* Estilos do Verso (Documentos) */
+.card-back h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 8px;
+}
+.docs a {
+  display: block;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.docs a:hover {
+  background-color: var(--bg);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+/* Dica visual de clique */
 .flip-hint {
-  text-align: center;
-  font-size: 11px;
-  color: #888;
-  margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px dashed #ddd;
+  text-align: center;
+  font-size: 11px;
+  color: #888;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed #ddd;
 }
-
-/* Verso - Documentos */
+/* Visualizador de PDF */
 .viewer {
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 15px 40px rgba(0,0,0,.12);
-  padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.12);
+  padding: 24px;
+  height: 720px; /* Alinhado com a altura do card */
+  display: flex;
+  flex-direction: column;
 }
-iframe {
-  width: 100%;
-  flex-grow: 1;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  min-height: 300px;
-}
-
-/* Footer */
+.viewer h2 { margin-top: 0; color: #333; }
+iframe { width: 100%; flex-grow: 1; border: 1px solid #ddd; border-radius: 12px; }
+footer { text-align: center; padding: 25px; color: #888; }
+/* === FOOTER === */
 .footer {
-  text-align: center;
-  font-size: 0.55rem;
-  color: #a3a3a3;
-  margin-top: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.55rem;
+    color: #a3a3a3;
 }
 .footer-logo {
-  display: block;
-  margin: 18px auto 40px;
-  width: 32px;
-  height: 24px;
-  background: url('logo_acalantobebe1.png') center/contain no-repeat;
-  opacity: 0.8;
+    display: block;
+    margin: 18px auto 100px;
+    width: 32px;
+    height: 24px;
+    background: url('logo_acalantobebe1.png') center/contain no-repeat;
+    opacity: 0.8;
 }
-
-/* Responsivo */
+/* Responsividade simples */
 @media (max-width: 768px) {
-  .card-container {
-    height: auto;
-    max-height: 88dvh;
-    min-height: 620px;
-  }
-  .avatar {
-    width: 100px;
-    height: 100px;
-    margin: -38px auto 15px;
-  }
+  .wrapper { grid-template-columns: 1fr; }
+  .card-container, .viewer { height: auto; min-height: 600px; }
+  iframe { min-height: 400px; }
+}
+  @media (max-width:768px){
+    .avatar{
+        width:110px;
+        height:110px;
+        min-width:110px;
+        min-height:110px;
+        flex:0 0 110px;
+        margin:-15px auto 18px;
+    }
 }
 </style>
 </head>
 <body>
 <div class="wrapper">
-  <div class="card-container" id="credentialCard" onclick="toggleCard(event)">
-    <div class="card-inner">
-
-      <!-- FRENTE -->
-      <div class="card-front">
-        <div class="watermark"></div>
-        <div class="header">
-          <h1>Acalanto Bebê</h1>
-          <p>Credencial Profissional</p>
-        </div>
-        <div class="avatar">
-          <img src="auricelia.png" alt="Avatar">
-        </div>
-        <div class="info">
-          <h2>Auricelia Gomes</h2>
-          <span class="badge">Ativo</span>
-          <div class="meta">
-            <div><b>COREN-RJ:</b> 831854</div>
-            <div><b>Cargo:</b> Enfermeira Neonatologista</div>
-            <div><b>CPF:</b> 06892860745</div>
-            <div><b>Identidade:</b> 0204452296</div>
-            <div><b>Site:</b> https://acalantobebe.com.br</div>
-          </div>
-          <p class="about-text">
-            Profissional com anos de experiência em enfermagem, especializada no cuidado, assistência e desenvolvimento de recém-nascidos...
-          </p>
-        </div>
-        <div class="flip-hint">👆 Toque para virar o cartão</div>
-        <div class="footer">
-          Sistema interno • Acalanto Bebê
-          <div class="footer-logo"></div>
-        </div>
-      </div>
-
-      <!-- VERSO -->
-      <div class="card-back">
-        <div class="watermark"></div>
-        <h2>Documentos</h2>
-        <div class="docs">
-          <a href="#" onclick="abrirPDF('vacinas_auricelia.pdf', event)">📄 VACINAS</a>
-        </div>
-
-        <div class="viewer">
-          <h2>Visualizador PDF</h2>
-          <iframe id="pdfViewer" title="PDF" loading="lazy"></iframe>
-        </div>
-
-        <div class="flip-hint">👋 Toque no cartão para voltar</div>
-      </div>
-    </div>
-  </div>
+  <!-- Container do Card 3D -->
+  <div class="card-container" id="credentialCard" onclick="toggleCard(event)">
+    <div class="card-inner">
+      <div class="watermark"></div>
+     
+      <!-- FRENTE DO CARD (DADOS) -->
+      <div class="card-front">
+        <div class="header">
+          <h1>Acalanto Bebê</h1>
+          <p>Credencial Profissional</p>
+        </div>
+        <div class="avatar">
+          <img src="auricelia.png" alt="Avatar">
+        </div>
+        <div class="info">
+          <h2>Auricelia Gomes</h2>
+          <span class="badge">Ativo</span>
+          <div class="meta">
+            <div><b>COREN-RJ:</b> 831854</div>
+            <div><b>Cargo:</b> Enfermeira Neonatologista</div>
+            <div><b>CPF:</b> 06892860745</div>
+            <div><b>Identidade:</b>0204452296 </div>
+            <div><b>Site:</b> https://acalantobebe.com.br</div>
+          </div>
+          <p class="about-text">
+            Profissional com anos de experiência em enfermagem, especializada no cuidado, assistência e desenvolvimento de recém-nascidos. Possui sólida trajetória em Unidades de Terapia Intensiva (UTI) Neonatal e UTI Materna, aliando excelência técnica, atendimento humanizado e amplo conhecimento em cuidados especializados. Conta ainda com vasta experiência em assistência domiciliar, oferecendo suporte integral a recém-nascidos e suas famílias, com foco na segurança, no bem-estar e na promoção do desenvolvimento saudável desde os primeiros dias de vida.
+          </p>
+        </div>
+        <div class="flip-hint">👆 Toque para virar o cartão e visualizar os documentos</div>
+        <div></div>
+        <div class="footer">
+        Sistema interno • Acalanto Bebê
+        <div class="footer-logo"></div>
+        <div></div>
+       
+    </div>
+      </div>
+    
+      <!-- VERSO DO CARD (DOCUMENTOS) -->
+      <div class="card-back">
+        <h2>Documentos</h2>
+        <div class="docs">
+          <!-- O "stopPropagation" evita que o card gire de volta ao clicar no link do PDF -->
+        
+          <a href="#" onclick="abrirPDF('vacinas_auricelia.pdf', event);">📄 VACINAS</a>
+        </div>
+        <!-- VISUALIZADOR PDF -->
+        <div class="viewer">
+    <h2>Visualizador PDF</h2>
+    <iframe
+    id="pdfViewer"
+    title="PDF"
+    loading="lazy"
+></iframe>
+  </div>
+ 
 </div>
-
+        <div class="flip-hint">👋 Toque no cartão para voltar aos dados</div>
+       
+      </div>
+    </div>
+  </div>
+ 
 <script>
-// Detecção de iOS
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-              (navigator.platform === 'MacIntel' && 'ontouchend' in document);
-
-// Toggle do card
-function toggleCard(e) {
-  if (e.target.tagName === 'A' || e.target.closest('a')) return;
-  document.getElementById('credentialCard').classList.toggle('flipped');
+  // 📱 FULLSCREEN (ROBUSTO)
+// ==========================
+function entrarFullscreen() {
+    const el = document.documentElement;
+    if (document.fullscreenElement) return;
+    if (el.requestFullscreen) {
+        el.requestFullscreen();
+    } else if (el.webkitRequestFullscreen) { // Safari
+        el.webkitRequestFullscreen();
+    } else if (el.msRequestFullscreen) { // IE11
+        el.msRequestFullscreen();
+    }
 }
-
-// Abrir PDF
+// Ativa em qualquer interação (mais confiável)
+["click", "touchstart"].forEach(evt => {
+    document.addEventListener(evt, entrarFullscreen);
+});
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  window.location.href = url;
+  window.open(url,"_blank");
+// Função para girar o card ao tocar/clicar nele
+function toggleCard(event) {
+  const card = document.getElementById('credentialCard');
+  card.classList.toggle('flipped');
+}
+// Função para abrir o PDF sem girar o card acidentalmente
 function abrirPDF(url, event) {
-  if (event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
-
-  if (isIOS) {
-    window.open(url, "_blank");
-  } else {
-    document.getElementById("pdfViewer").src = url;
-  }
+    if(event){
+        event.stopPropagation();
+    }
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+               || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if(isIOS){
+        window.open(url, "_blank");
+        return;
+    }
+    document.getElementById("pdfViewer").src = url;
 }
-
-// Melhorias de touch
-document.addEventListener('touchstart', () => {}, { passive: true });
 </script>
 </body>
 </html>
