@@ -189,22 +189,7 @@ background-size:cover;
   justify-content: flex-start;
 }
 
-/* ==================== IMAGEM DE FUNDO REGENERADA ==================== */
-/* Adiciona a imagem de fundo com marca d'água na frente e no verso do card */
-.card-front::before,
-.card-back::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: url("mae_bebe_contorno3.png") no-repeat center center;
-    background-size: contain; 
-    opacity: 0.1; 
-    z-index: -1; 
-    pointer-events: none; 
-}
+
 
 /* Garante que todos os elementos de texto/imagens fiquem acima do fundo */
 .card-front > *, 
@@ -224,19 +209,35 @@ background-size:cover;
 .header h1 { margin: 0; font-size: 24px; }
 .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
 
-.avatar { 
-  width: 120px; 
-  height: 120px; 
-  border-radius: 50%; 
-  margin: -10px auto 10px; /* Sobrepõe levemente o header */
-  border: 1px solid #fff; 
-  overflow: hidden; 
-  background: #eee; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  position: relative;
-  z-index: 10;
+.avatar{
+    width:110px;
+    height:110px;
+    min-width:110px;
+    min-height:110px;
+    flex:0 0 110px;
+    flex-shrink:0;
+    aspect-ratio:1/1;
+    margin:-20px auto 15px;
+    border-radius:50%;
+    overflow:hidden;
+    position:relative;
+    z-index:20;
+    background:rgba(255,255,255,.22);
+    backdrop-filter:blur(10px);
+    border:0px solid rgba(255,255,255,.75);
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18),
+        inset 0 1px 2px rgba(255,255,255,.6);
+
 }
-.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.avatar img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+}
 
 .info { padding: 0 24px 24px; }
 .info h2 { text-align: center; color: #353535a8; font-size: 20px; }
@@ -330,6 +331,23 @@ footer { text-align: center; padding: 25px; color: #888; }
   .wrapper { grid-template-columns: 1fr; }
   .card-container, .viewer { height: auto; min-height: 600px; }
   iframe { min-height: 400px; }
+}
+  @media (max-width:768px){
+
+    .avatar{
+
+        width:110px;
+        height:110px;
+
+        min-width:110px;
+        min-height:110px;
+
+        flex:0 0 110px;
+
+        margin:-15px auto 18px;
+
+    }
+
 }
 </style>
 </head>
