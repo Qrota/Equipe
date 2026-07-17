@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Credencial Profissional - Acalanto</title>
+<style>
+:root {
+
+  --primary:#fab9b9;
+  --secondary:#fbecec;
+  --accent:#39c6cf;
+  --bg:#fff8fa;
+  --exclusive-gold: #c5a880;
+    --exclusive-gold-dark: #aa895d;
+    --exclusive-gold-light: #faf7f2;
+  /* ===== Premium Frosted Glass ===== */
+  --glass-bg:
+      rgba(255,255,255,.18);
+  --glass-bg-hover:
+      rgba(255,255,255,.24);
+  --glass-border:
+      rgba(255,255,255,.38);
+  --glass-border-light:
+      rgba(255,255,255,.58);
+  --glass-shadow:
+  
+
+      0 25px 60px rgba(0,0,0,.16),
+      inset 0 1px 1px rgba(255,255,255,.45),
+      inset 0 -1px 1px rgba(255,255,255,.10);
+
+}
+* { box-sizing: border-box; }
+body { 
+  margin: 0; 
+  font-family: Arial, sans-serif; 
+ background:
+
+radial-gradient(circle at top left,
+#ffdcdc 0%,
+transparent 35%),
+
+radial-gradient(circle at bottom right,
+#eef8ff 0%,
+transparent 40%),
+
+linear-gradient(
+135deg,
+#ececec,
+#d6d6d6,
+#bdbdbd
+);
+
+background-attachment:fixed;
+background-size:cover;
+  padding: 10px; 
+  border-radius: 10px;
+
+}
+.wrapper { 
+  max-width: 100dvh; 
+  margin: auto; 
+  display: grid; 
+  grid-template-columns: 100% 1fr; 
+  gap: 24px; 
+}
+
+
+/* ==================== ESTRUTURA DO CARD 3D (FLIP) ==================== */
+.card-container {
+  perspective: 1000px; 
+  width: 100%;
+  height: 100%; 
+  cursor: pointer;
+  position: relative;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height:100dvh;
+  text-align: left;
+  transition: transform 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  transform-style: preserve-3d;
+}
+
+/* Classe que será aplicada via JS ao clicar no card */
+.card-container.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+
+.card-front,
+.card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    border-radius:28px;
+    color:inherit;
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.26),
+            rgba(255,255,255,.12)
+        );
+    backdrop-filter:
+        blur(24px)
+        saturate(185%)
+        brightness(1.08);
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(185%)
+        brightness(1.08);
+    border:1px solid rgba(255,255,255,.42);
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.16),
+        inset 0 1px 1px rgba(255,255,255,.55),
+        inset 0 -1px 1px rgba(255,255,255,.08);
+    transition:
+       .45s cubic-bezier(.16,1,.3,1);
+
+}
+.card-front::after,
+.card-back::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    background:
+
+        linear-gradient(
+            140deg,
+            rgba(255,255,255,.55),
+            rgba(255,255,255,.22) 18%,
+            rgba(255, 255, 255, 0.021) 45%,
+            transparent 75%
+
+     );
+
+}
+.card-front::before,
+.card-back::before{
+
+    content:"";
+    position:absolute;
+    inset:1px;
+    border-radius:27px;
+    border:1px solid rgba(255,255,255,.18);
+    pointer-events:none;
+
+}
+.card-front .watermark,
+.card-back .watermark{
+
+    position:absolute;
+    inset:0;
+    background:url("Imagens/mae_bebe_contorno3.png") center center no-repeat;
+    background-size:contain;
+    opacity:.08;
+    pointer-events:none;
+
+}
+/* Efeito de hover interativo para enriquecer o visual do vidro */
+.card-front:hover, .card-back:hover {
+    border-color: rgba(255, 255, 255, 0.747);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* Frente do Card */
+.card-front {
+  z-index: 1;
+  transform: rotateY(0deg);
+}
+
+/* Verso do Card */
+.card-back {
+  transform: rotateY(180deg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ==================== IMAGEM DE FUNDO REGENERADA ==================== */
+/* Adiciona a imagem de fundo com marca d'água na frente e no verso do card */
+.card-front::before,
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("Imagens/mae_bebe_contorno3.png") no-repeat center center;
+    background-size: contain; 
+    opacity: 0.1; 
+    z-index: -1; 
+    pointer-events: none; 
+}
+
+/* Garante que todos os elementos de texto/imagens fiquem acima do fundo */
+.card-front > *, 
+.card-back > * {
+    position: relative;
+    z-index: 1;
+}
+/* ===================================================================== */
+
+/* Estilos internos do Card */
+.header { 
+  background: linear-gradient(135deg,  var(--secondary),var(--primary)); 
+  color: #3d3c3c; 
+  padding: 20px; 
+  text-align: center; 
+}
+.header h1 { margin: 0; font-size: 24px; }
+.header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
+
+.avatar { 
+  width: 120px; 
+  height: 120px; 
+  border-radius: 50%; 
+  margin: -10px auto 10px; /* Sobrepõe levemente o header */
+  border: 1px solid #fff; 
+  overflow: hidden; 
+  background: #eee; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.info { padding: 0 24px 24px; }
+.info h2 { text-align: center; color: #353535a8; font-size: 20px; }
+.badge { 
+  display: inline-block; 
+  background: linear-gradient(135deg, var(--exclusive-gold), var(--exclusive-gold-dark));
+  color: rgb(230, 235, 248); 
+  padding: 4px 14px; 
+  border-radius: 20px; 
+  font-size: 12px; 
+  font-weight: bold;
+}
+.meta { margin: 12px 0; font-size: 14px; }
+.meta div { padding: 6px 0; border-bottom: 1px solid #eee; }
+
+.about-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* Estilos do Verso (Documentos) */
+.card-back h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 8px;
+}
+.docs a { 
+  display: block; 
+  padding: 12px; 
+  margin: 10px 0; 
+  border: 1px solid #ddd; 
+  border-radius: 10px; 
+  text-decoration: none; 
+  color: #444; 
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.docs a:hover {
+  background-color: var(--bg);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Dica visual de clique */
+.flip-hint {
+  text-align: center;
+  font-size: 11px;
+  color: #888;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed #ddd;
+}
+
+/* Visualizador de PDF */
+.viewer { 
+  background: #fff; 
+  border-radius: 22px; 
+  box-shadow: 0 15px 40px rgba(0,0,0,.12); 
+  padding: 24px; 
+  height: 720px; /* Alinhado com a altura do card */
+  display: flex;
+  flex-direction: column;
+}
+.viewer h2 { margin-top: 0; color: #333; }
+iframe { width: 100%; flex-grow: 1; border: 1px solid #ddd; border-radius: 12px; }
+
+footer { text-align: center; padding: 25px; color: #888; }
+
+/* === FOOTER === */
+.footer {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.55rem;
+    color: #a3a3a3;
+}
+.footer-logo {
+    display: block;
+    margin: 18px auto 100px;
+    width: 32px;
+    height: 24px;
+    background: url('Imagens/logo_acalantobebe1.png') center/contain no-repeat;
+    opacity: 0.8;
+}
+
+/* Responsividade simples */
+@media (max-width: 768px) {
+  .wrapper { grid-template-columns: 1fr; }
+  .card-container, .viewer { height: auto; min-height: 600px; }
+  iframe { min-height: 400px; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <!-- Container do Card 3D -->
+  <div class="card-container" id="credentialCard" onclick="toggleCard(event)">
+    <div class="card-inner">
+      
+      <!-- FRENTE DO CARD (DADOS) -->
+      <div class="card-front">
+        <div class="header">
+          <h1>Acalanto Bebê</h1>
+          <p>Credencial Profissional</p>
+        </div>
+        <div class="avatar">
+          <img src="Imagens/carla.png" alt="Avatar">
+        </div>
+        <div class="info">
+          <h2>Carla Cristina Fernandes</h2>
+          <span class="badge">Ativo</span>
+          <div class="meta">
+            <div><b>COREN-RJ:</b> 228238</div>
+            <div><b>Cargo:</b> Técnica de Enfermagem</div>
+            <div><b>Cpf:</b> 10433662700 </div>
+            <div><b>Identidade:</b> 0125513549</div>
+            <div><b>Site:</b> https://acalantobebe.com.br</div>
+          </div>
+          <p class="about-text">
+            Com anos de experiência na assistência neonatal, dedica-se ao cuidado especializado de recém-nascidos em ambiente domiciliar. Une conhecimento técnico, atendimento humanizado e atenção individualizada para oferecer segurança, conforto e tranquilidade às famílias nos primeiros momentos de vida do bebê.
+          </p>
+        </div>
+        <div class="flip-hint">👆 Toque para virar o cartão e visualizar os documentos</div>
+        <div></div>
+        <div class="footer">
+        Sistema interno • Acalanto Bebê
+        <div class="footer-logo"></div>
+        <div></div>
+        
+    </div>
+      </div>
+     
+
+      <!-- VERSO DO CARD (DOCUMENTOS) -->
+      <div class="card-back">
+        <h2>Documentos</h2>
+        <div class="docs">
+          <!-- O "stopPropagation" evita que o card gire de volta ao clicar no link do PDF -->
+         
+          <a href="#" onclick="abrirPDF('', event);">📄 </a>
+        </div>
+        <!-- VISUALIZADOR PDF -->
+  <div class="viewer">
+    <h2>Visualizador PDF</h2>
+    <iframe id="pdfViewer" src="" placeholder="Selecione um documento no verso do cartão"></iframe>
+  </div>
+</div>
+        <div class="flip-hint">👋 Toque no cartão para voltar aos dados</div>
+        
+      </div>
+
+    </div>
+  </div>
+
+  
+<script>
+// Função para girar o card ao tocar/clicar nele
+function toggleCard(event) {
+  const card = document.getElementById('credentialCard');
+  card.classList.toggle('flipped');
+}
+
+// Função para abrir o PDF sem girar o card acidentalmente
+function abrirPDF(url, event) {
+  // Impede que o clique no link ative o evento de clique do card principal (evitando o giro automático)
+  if (event) {
+    event.stopPropagation();
+  }
+  document.getElementById('pdfViewer').src = url;
+}
+</script>
+</body>
+</html>

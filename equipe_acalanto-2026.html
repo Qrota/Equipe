@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa Equipe de Especialistas - Acalanto Bebê</title>
+<style>
+/* ================= VARIÁVEIS E ESTILOS ENVIADOS ================= */
+:root{
+    --glass-bg: rgba(255,255,255,.18);
+    --glass-bg-hover: rgba(255,255,255,.23);
+    --glass-border: rgba(255,255,255,.38);
+    --glass-border-light: rgba(255,255,255,.55);
+    --exclusive-gold: #c5a880;
+    --exclusive-gold-dark: #aa895d;
+    --exclusive-gold-light: #faf7f2;
+
+    --glass-shadow:
+        0 12px 35px rgba(0,0,0,.12),
+        0 3px 12px rgba(255,255,255,.18) inset,
+        0 -2px 8px rgba(255,255,255,.08) inset;
+
+    --glass-highlight:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.45),
+            rgba(255,255,255,.08) 35%,
+            rgba(255,255,255,.02) 100%
+        );
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #333333;
+    background: linear-gradient(
+        145deg,
+        #838282,
+        #a1a1a157
+    );
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 70px; /* Offset para o header fixo */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+}
+
+strong, .bold {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ================= HEADER FIXO ================= */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.233);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+}
+
+.main-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+.logo {
+    display: flex;
+    align-items: center; /* alinha verticalmente */
+    gap: 10px;
+}
+.logo img {
+    height: 45px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #525252;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    display: inline-block;
+}
+nav.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav.nav-menu ul li a {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav.nav-menu ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav.nav-menu ul li a:hover {
+    color: var(--accent);
+}
+
+nav.nav-menu ul li a:hover::after,
+nav.nav-menu ul li a.active::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: block;
+    }
+    
+    nav.nav-menu {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+    }
+
+    nav.nav-menu.open {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    nav.nav-menu ul {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+/* ================= PORTAL DOS PROFISSIONAIS (GRID) ================= */
+.section-intro {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+
+
+.desc-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.glass-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* ================= GLASS CARD DOS PROFISSIONAIS ================= */
+.glass-card{
+
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.24),
+            rgba(255,255,255,.12)
+        );
+
+    backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(1.08);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(1.08);
+
+    border:1px solid rgba(255,255,255,.38);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.14),
+        inset 0 1px 1px rgba(255,255,255,.45),
+        inset 0 -1px 1px rgba(255,255,255,.08);
+
+    transition:
+        transform .45s,
+        box-shadow .45s,
+        background .45s;
+
+}
+.glass-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        linear-gradient(
+            140deg,
+            rgba(252, 201, 201, 0.55) 0%,
+            rgba(255, 214, 214, 0.22) 18%,
+            rgba(241, 238, 238, 0.527) 45%,
+            rgba(51, 48, 48, 0) 70%
+        );
+
+}
+.glass-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:1px;
+
+    border-radius:27px;
+
+    border:1px solid rgba(255,255,255,.22);
+
+    pointer-events:none;
+
+}
+.glass-card:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.30),
+            rgba(255,255,255,.15)
+        );
+
+    box-shadow:
+
+        0 28px 60px rgba(0,0,0,.18),
+
+        0 0 40px rgba(255,255,255,.18),
+
+        inset 0 1px 1px rgba(255,255,255,.55),
+
+        inset 0 -1px 1px rgba(255,255,255,.12);
+
+}
+
+.card-decoration-header{
+
+    height:110px;
+
+    background:
+
+        linear-gradient(
+            140deg,
+            rgba(253, 215, 215, 0.35),
+            rgba(245, 211, 211, 0.418),
+            rgba(247, 200, 200, 0.25)
+        );
+
+    border-bottom:1px solid rgba(255,255,255,.25);
+
+    position:relative;
+
+}
+.avatar-wrapper {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 4px solid var(--white);
+    overflow: hidden;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fbfbfb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 55px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.prof-name {
+    font-size: 1.4rem;
+    color: var(--text-main);
+    font-weight: 300;
+    margin-bottom: 6px;
+}
+
+.prof-role {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.badge-active {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--exclusive-gold), var(--exclusive-gold-dark));
+    border: 1px solid var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin: 0 auto 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.prof-summary {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.btn-primary-card {
+    display: inline-block;
+     background:
+
+        linear-gradient(
+            135deg,
+            #f9bcbc,
+            #f58e8e
+        );
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border: none;
+     box-shadow:
+
+        0 10px 25px rgba(245,142,142,.35),
+
+        inset 0 1px 0 rgba(255,255,255,.45);
+
+    transition:.35s;
+    width: 100%;
+}
+
+.glass-card:hover .btn-primary-card {
+    transform: translateY(-3px);
+    box-shadow:
+
+        0 16px 35px rgba(245,142,142,.45),
+
+        inset 0 1px 1px rgba(255,255,255,.55);
+
+}
+
+/* ================= BANNER ADMISSÃO EXCLUSIVA NA HOME ================= */
+.exclusive-warning-banner {
+    background: linear-gradient(135deg, rgba(43,43,43,0.95), rgba(21,21,21,0.95));
+    color: white;
+    padding: 25px;
+    border-radius: 24px;
+    border: 1px solid var(--exclusive-gold);
+    margin-bottom: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+.exclusive-warning-banner h3 {
+    color: var(--exclusive-gold);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.exclusive-warning-banner p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.exclusive-warning-banner .btn-admissao-trigger {
+    background: var(--exclusive-gold);
+    color: #111;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: all 0.3s;
+}
+
+.exclusive-warning-banner .btn-admissao-trigger:hover {
+    background: var(--exclusive-gold-light);
+    color: var(--exclusive-gold-dark);
+    box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
+}
+
+/* ================= WHATSAPP FLUTUANTE ================= */
+.btn-whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    z-index: 999;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.btn-whatsapp-float img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+.btn-whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 196, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: rgba(40, 40, 40, 0.95);
+    color: #fff;
+    text-align: center;
+    padding: 50px 20px 30px;
+    margin-top: auto;
+}
+
+footer img.logo-footer {
+    max-width: 80px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+footer a {
+    color: var(--accent);
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 900px) {
+    .hamburger {
+        display: block;
+    }
+    
+    nav.nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgb(255, 255, 255);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+        display: none; /* Controlado via JS */
+    }
+
+    nav.nav-menu.open {
+        display: flex;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    nav.nav-menu ul {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+</style>
+<!-- Inclusão de fontes estéticas -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ================= MAIN HEADER FOTUANTE (GLASSMORPHISM) ================= -->
+  <header class="main-header">
+    <div class="container">
+      <a href="#https://acalanto.com.br" class="logo">
+        <img src="Imagens/logo_acalantobebe1.png" alt="Logo Acalanto Bebê" onerror="this.style.display='none'">
+        <span class="logo-text">Acalanto Bebê</span>
+      </a>
+      
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Abrir Menu">☰</button>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul>
+          <li><a href="#" class="active">Equipe</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+
+  <!-- ================= SEÇÃO INTRODUTÓRIA ================= -->
+  <section class="section-intro">
+    <h1 class="section-title">Sua Equipe de Profissionais</h1>
+    <p class="desc-text">
+      Cuidadoras altamente dedicadas e ativas. Toque no especialista desejado para visualizar sua <strong>credencial profissional.</strong>.
+    </p>
+  </section>
+
+  <!-- ================= CORPO DE CARDS EM GRID DE VIDRO ================= -->
+  <main class="main-container">
+
+    
+
+    <!-- Grid de Especialistas -->
+    <div class="glass-grid">
+
+       <!-- PROFISSIONAL 1 (Auricelia) -->
+      <a href="auricelia.html" class="glass-card">
+        <div class="card-decoration-header">
+          <div class="avatar-wrapper">
+            <img src="Imagens/auricelia.png" alt="Auricelia Gomes" onerror="this.src='https://via.placeholder.com/150'">
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="prof-name">Auricelia Gomes</h3>
+          <p class="prof-role">Enfermeira Neonatologista</p>
+          <span class="badge-active">Ativo</span>
+          <p class="prof-summary">
+            Profissional com sólida trajetória em Unidades de Terapia Intensiva (UTI) Neonatal e UTI Materna.
+          </p>
+          <button class="btn-primary-card" type="button">Ver Credencial</button>
+        </div>
+      </a>
+        <!-- PROFISSIONAL 2 (Carla) -->
+      <a href="carla.html" class="glass-card">
+        <div class="card-decoration-header">
+          <div class="avatar-wrapper">
+            <img src="Imagens/carla.png" alt="Carla Fernandes">
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="prof-name">Carla Cristina Fernandes</h3>
+          <p class="prof-role">Técnica de Enfermagem</p>
+          <span class="badge-active">Ativo</span>
+          <p class="prof-summary">
+            Com anos de experiência na assistência neonatal, dedica-se ao cuidado especializado de recém-nascidos em ambiente domiciliar.
+          </p>
+          <button class="btn-primary-card" type="button">Ver Credencial</button>
+        </div>
+      </a>
+
+     
+
+      <!-- PROFISSIONAL 3 (Jociane) -->
+      <a href="jociane.html" class="glass-card">
+        <div class="card-decoration-header">
+          <div class="avatar-wrapper">
+            <img src="Imagens/jociane.png" alt="Jociane Batista" onerror="this.src='https://via.placeholder.com/150'">
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="prof-name">Jociane Batista</h3>
+          <p class="prof-role">Técnica de Enfermagem</p>
+          <span class="badge-active">Ativo</span>
+          <p class="prof-summary">
+            Profissional de Enfermagem com anos de experiência, especializada no cuidado, assistência e desenvolvimento de recém-nascidos.
+          </p>
+          <button class="btn-primary-card" type="button">Ver Credencial</button>
+        </div>
+      </a>
+
+       <!-- PROFISSIONAL 4 (Silvia) -->
+      <a href="silvia.html" class="glass-card">
+        <div class="card-decoration-header">
+          <div class="avatar-wrapper">
+            <img src="Imagens/silvia.png" alt="Silvia da Silva" onerror="this.src='https://via.placeholder.com/150'">
+          </div>
+        </div>
+        <div class="card-content">
+          <h3 class="prof-name">Silvia da Silva</h3>
+          <p class="prof-role">Técnica de Enfermagem</p>
+          <span class="badge-active">Ativo</span>
+          <p class="prof-summary">
+            Possui sólida atuação em atendimento domiciliar, oferecendo um cuidado humanizado, seguro e individualizado.
+          </p>
+          <button class="btn-primary-card" type="button">Ver Credencial</button>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  
+
+  <!-- ================= FOOTER SOFISTICADO ================= -->
+  <footer>
+    <img src="imagens/logo_acalantobebe1.png" alt="Logo Rodapé" class="logo-footer" onerror="this.style.display='none'">
+    <p>© 2026 Acalanto Bebê. Todos os direitos reservados.</p>
+    <p>
+      <a href="#">Políticas de Privacidade</a> | 
+      <a href="#">Termos de Atendimento</a>
+    </p>
+  </footer>
+
+  <script>
+    // Gerenciador do Menu Sanduíche para Celular
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      if (menu.style.display === 'flex' || menu.classList.contains('open')) {
+        menu.classList.remove('open');
+        menu.style.display = 'none';
+      } else {
+        menu.classList.add('open');
+        menu.style.display = 'flex';
+      }
+    }
+  </script>
+</body>
+</html>
