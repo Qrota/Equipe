@@ -157,17 +157,6 @@ background-size:cover;
     pointer-events:none;
 
 }
-.card-front .watermark,
-.card-back .watermark{
-
-    position:absolute;
-    inset:0;
-    background:url('mae_bebe_contorno3.png') center center no-repeat;
-    background-size:contain;
-    opacity:.08;
-    pointer-events:none;
-
-}
 /* Efeito de hover interativo para enriquecer o visual do vidro */
 .card-front:hover, .card-back:hover {
     border-color: rgba(255, 255, 255, 0.747);
@@ -187,6 +176,22 @@ background-size:cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+/* ==================== IMAGEM DE FUNDO REGENERADA ==================== */
+/* Adiciona a imagem de fundo com marca d'água na frente e no verso do card */
+.card-front::before,
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("mae_bebe_contorno3.png") no-repeat center center;
+    background-size: contain; 
+    opacity: 0.1; 
+    z-index: -1; 
+    pointer-events: none; 
 }
 
 
