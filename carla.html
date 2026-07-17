@@ -157,17 +157,6 @@ background-size:cover;
     pointer-events:none;
 
 }
-.card-front .watermark,
-.card-back .watermark{
-
-    position:absolute;
-    inset:0;
-    background:url("mae_bebe_contorno3.png") center center no-repeat;
-    background-size:contain;
-    opacity:.08;
-    pointer-events:none;
-
-}
 /* Efeito de hover interativo para enriquecer o visual do vidro */
 .card-front:hover, .card-back:hover {
     border-color: rgba(255, 255, 255, 0.747);
@@ -187,6 +176,22 @@ background-size:cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+/* ==================== IMAGEM DE FUNDO REGENERADA ==================== */
+/* Adiciona a imagem de fundo com marca d'água na frente e no verso do card */
+.card-front::before,
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: url("mae_bebe_contorno3.png") no-repeat center center;
+    background-size: contain; 
+    opacity: 0.1; 
+    z-index: -1; 
+    pointer-events: none; 
 }
 
 
@@ -241,24 +246,23 @@ background-size:cover;
 
 .info { padding: 0 24px 24px; }
 .info h2 { text-align: center; color: #353535a8; font-size: 20px; }
-.badge-wrapper { text-align: center; margin-bottom: 10px; }
-.badge {
-  display: inline-block;
+.badge { 
+  display: inline-block; 
   background: linear-gradient(135deg, var(--exclusive-gold), var(--exclusive-gold-dark));
-  color: rgb(230, 235, 248);
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
+  color: rgb(230, 235, 248); 
+  padding: 4px 14px; 
+  border-radius: 20px; 
+  font-size: 12px; 
   font-weight: bold;
 }
 .meta { margin: 12px 0; font-size: 14px; }
-.meta div { padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.meta div { padding: 6px 0; border-bottom: 1px solid #eee; }
+
 .about-text {
   font-size: 13px;
   line-height: 1.4;
-  color: #444;
+  color: #555;
   margin-top: 10px;
-  text-align: justify;
 }
 
 /* Estilos do Verso (Documentos) */
