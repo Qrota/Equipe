@@ -225,17 +225,16 @@ background-size:cover;
 .header p { margin: 5px 0 0; font-size: 14px; opacity: 0.9; }
 
 .avatar {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 2px solid var(--white);
-    overflow: hidden;
-    position: absolute;
-    bottom: -45px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fbfbfb;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 120px; 
+  height: 120px; 
+  border-radius: 50%; 
+  margin: -10px auto 10px; /* Sobrepõe levemente o header */
+  border: 1px solid #fff; 
+  overflow: hidden; 
+  background: #eee; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .avatar img {
