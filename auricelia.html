@@ -445,11 +445,24 @@ function toggleCard(event) {
 
 // Função para abrir o PDF sem girar o card acidentalmente
 function abrirPDF(url, event) {
-  // Impede que o clique no link ative o evento de clique do card principal (evitando o giro automático)
-  if (event) {
-    event.stopPropagation();
-  }
-  document.getElementById('pdfViewer').src = url;
+
+    if(event){
+        event.stopPropagation();
+    }
+
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+               || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if(isIOS){
+
+        window.open(url, "_blank");
+
+        return;
+
+    }
+
+    document.getElementById("pdfViewer").src = url;
+
 }
 </script>
 </body>
